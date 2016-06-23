@@ -1,0 +1,21 @@
+default: &default
+  adapter: mysql2
+  encoding: utf8
+  pool: 5
+  username: root
+  password:
+  socket: /var/run/mysqld/mysqld.sock
+
+development:
+  <<: *default
+  database: web1_development
+
+test:
+  <<: *default
+  database: web1_test
+
+production:
+  <<: *default
+  database: web1_production
+  username: web1
+  password: <%= ENV['WEB1_DATABASE_PASSWORD'] %>
